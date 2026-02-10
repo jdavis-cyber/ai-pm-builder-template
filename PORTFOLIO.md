@@ -82,7 +82,7 @@ jdavis-cyber-workspace/
 
 Jerome Davis is a senior Program Manager and AI Governance Strategist building at the intersection of DoD/Federal compliance, AI lifecycle management, and enterprise software development. This repository demonstrates hands-on application of governance-first AI development using agentic coding platforms.
 
-**Contact**: [GitHub Profile](https://github.com/JDavis-Cyber) | [LinkedIn](https://linkedin.com/in/yourprofile)
+**Contact**: [GitHub Profile](https://github.com/JDavis-Cyber) | [LinkedIn](https://www.linkedin.com/in/jerome-davis-csie-cpmai-66aabb297/)
 
 ---
 
