@@ -118,4 +118,4 @@ See [PORTFOLIO.md](PORTFOLIO.md) for the full project showcase.
 **Last Updated**: 2026-02-09
 **Owner**: Jerome Davis
 **Framework Version**: Enterprise AI Governance & Lifecycle Management Framework v1.1.1
-**Platforms**: Claude Code, Google Anti-Gravity
+**Platforms**: Claude Code, Google Antigravity
