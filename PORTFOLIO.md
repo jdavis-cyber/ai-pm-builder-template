@@ -28,7 +28,7 @@ For framework details, see the [Quick Start Guide](QUICK-START-GUIDE.md) or [Tem
 <!-- PROJECT_TABLE_START -->
 | # | Project | Status | Tech Stack | Phase | Demo |
 |---|---------|--------|------------|-------|------|
-| — | *No projects yet* | — | — | — | — |
+| 1 | [eBook Forge](projects/ebook-forge/) | ✅ Released | React 18, Tailwind CSS, Gemini API | Complete | [Open index.html locally](projects/ebook-forge/index.html) |
 <!-- PROJECT_TABLE_END -->
 
 *Projects are listed in reverse chronological order. Each project folder contains its own `PROJECT.md` with full details, demo links, and governance artifacts.*
