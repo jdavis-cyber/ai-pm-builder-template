@@ -10,7 +10,7 @@ The goal is visibility and governance, not bureaucracy. The human director shoul
 
 All agents report their status to the Scrum Master through the existing memory file and task board system. The Scrum Master then distills that information into structured briefings for the human director. No agent communicates project status directly to external parties — that's the human director's role, enabled by the Scrum Master's reporting.
 
-```
+```text
 ┌──────────────────────────────────────────────────┐
 │                  AGENT FLEET                       │
 │  Requirements BA ─┐                                │
@@ -39,6 +39,7 @@ The Scrum Master reports to the human director at five defined touchpoints. Thes
 **Format**: Brief summary written to today's memory file, tagged for the human director.
 
 **Content**:
+
 ```markdown
 ### Director Briefing: Task Complete
 **Task**: [TASK-ID] — [Task Name]
@@ -60,6 +61,7 @@ The Scrum Master reports to the human director at five defined touchpoints. Thes
 **Format**: Structured summary in the sprint section of the task board and today's memory file.
 
 **Content**:
+
 ```markdown
 ### Director Briefing: Sprint Kickoff
 **Sprint**: [Number/Name]
@@ -83,6 +85,7 @@ The Scrum Master reports to the human director at five defined touchpoints. Thes
 **Format**: Urgent entry in today's memory file, tagged for the human director.
 
 **Content**:
+
 ```markdown
 ### Director Escalation: Blocker
 **Severity**: [Critical — blocks multiple agents / High — blocks one agent / Medium — slows work]
@@ -104,6 +107,7 @@ The Scrum Master reports to the human director at five defined touchpoints. Thes
 **Format**: Structured summary in the task board retrospective section and today's memory file.
 
 **Content**:
+
 ```markdown
 ### Director Briefing: Sprint Complete
 **Sprint**: [Number/Name]
@@ -139,6 +143,7 @@ The Scrum Master reports to the human director at five defined touchpoints. Thes
 **Format**: Urgent entry in today's memory file, tagged for the human director.
 
 **Content**:
+
 ```markdown
 ### Director Alert: Circuit Breaker Triggered
 **Date**: [YYYY-MM-DD]
@@ -158,10 +163,23 @@ The Scrum Master reports to the human director at five defined touchpoints. Thes
 
 Certain decisions require your explicit approval before the team proceeds. The Scrum Master is responsible for identifying when an approval gate is reached and presenting you with the decision.
 
+### Hard Stops (The "Red Light" Protocol)
+
+Unlike standard approval gates where work might continue in parallel, a **Hard Stop** halts all forward progress on the affected track.
+
+| Trigger Event | Action | Resolution Owner |
+| :--- | :--- | :--- |
+| **Phase Gate Failure** | **STOP**: No work on next-phase tasks. | Program Analyst |
+| **Missing Prerequisite** | **STOP**: Agent refuses task assignment. | Scrum Master |
+| **Scope Creep** | **STOP**: Unplanned feature added mid-sprint. | Scrum Master |
+| **Circuit Breaker** | **STOP**: Recurring error pattern detected. | Scrum Master |
+
+**Protocol**: When a Hard Stop occurs, the Scrum Master tags the memory file with `### STOP WORK ORDER` and notifies the Director immediately.
+
 ### Decisions That Require Human Approval
 
 | Decision Type | Why It Needs Approval | Who Presents It |
-|---------------|----------------------|-----------------|
+| :--- | :--- | :--- |
 | **Sprint scope and priorities** | You decide what gets built and in what order | Scrum Master at sprint start |
 | **Architecture direction changes** | Major technical pivots affect timeline and cost | Scrum Master, with Architecture SE context |
 | **Scope additions mid-sprint** | Adding work means something else gets dropped or delayed | Scrum Master when scope creep is detected |

@@ -107,9 +107,9 @@ Certain decisions require the human director's explicit approval before proceedi
 When an agent completes work that another agent depends on:
 
 1. Complete the **Verify** phase of the self-annealing protocol
-2. Write completion summary to `projects/[project-name]/memory/[YYYY-MM-DD].md` including self-review summary
+2. Write completion summary to `.agent/memory/[YYYY-MM-DD].md` including self-review summary
 3. Tag the file with required artifacts (code, docs, diagrams)
-4. Update the project task board in `projects/[project-name]/orchestration/tasks.md`
+4. Update the project task board in `.agent/tasks.md`
 5. Notify the next agent by updating their work queue
 6. If the learning applies cross-project, also update `memory/MEMORY.md` at the repo root
 
@@ -118,7 +118,7 @@ When an agent completes work that another agent depends on:
 #### Project-Specific Memory
 
 ```text
-projects/[project-name]/memory/
+.agent/memory/
   ├── 2026-02-09.md          # Today's activity log
   ├── 2026-02-08.md          # Yesterday's activity log
   └── MEMORY.md              # Long-term project learnings and decisions
@@ -158,15 +158,15 @@ memory/
 
 ### Solo Mode
 
-You are working independently on a well-scoped task in a specific project. Check `projects/[project-name]/memory/[TODAY].md` for your assignment, execute, document your work, and write results back to project memory.
+You are working independently on a well-scoped task in a specific project. Check `.agent/memory/[TODAY].md` for your assignment, execute, document your work, and write results back to project memory.
 
 ### Coordinated Mode
 
-You are part of a sequential workflow within a project. Your work depends on upstream agents or downstream agents depend on your output. Always check task dependencies in `projects/[project-name]/orchestration/dependencies.md` before starting.
+You are part of a sequential workflow within a project. Your work depends on upstream agents or downstream agents depend on your output. Always check task dependencies in `.agent/tasks.md` before starting.
 
 ### Parallel Mode
 
-You are working simultaneously with other agents on independent tasks within a project. Avoid file conflicts by working in your designated directories within the project. Coordinate through the project memory layer at `projects/[project-name]/memory/`.
+You are working simultaneously with other agents on independent tasks within a project. Avoid file conflicts by working in your designated directories within the project. Coordinate through the project memory layer at `.agent/memory/`.
 
 ## Quality Standards
 
@@ -190,6 +190,27 @@ You are working simultaneously with other agents on independent tasks within a p
 - Don't assume knowledge that only exists in your session
 - If you make a decision, document why
 - If you encounter ambiguity, flag it explicitly
+
+## Strict Process Enforcement (The Double-Lock Protocol)
+
+To ensure this agentic system functions as a true development team, we enforce a **Double-Lock Protocol**. Agents must refuse to proceed if these locks are not open.
+
+### Lock 1: Operational Readiness (Scrum Master Enforced)
+
+**Rule**: No agent starts task execution without a "Definition of Ready."
+
+- **Inputs**: Upstream artifacts must exist in the file system (not just in conversation).
+- **Task State**: The task must be assigned and unblocked in `tasks.md`.
+- **Refusal**: If inputs are missing, you **MUST** refuse the request.
+  > "I cannot proceed with **[Task]** because **[Prerequisite]** is missing. Please provide **[Artifact]** or instruct the **[Relevant Agent]** to generate it."
+
+### Lock 2: Governance Clearance (Program Analyst Enforced)
+
+**Rule**: No agent advances to a new CPMAI Phase without a passed Phase Gate.
+
+- **Gate Status**: The Program Analyst must have marked the previous Phase Gate as "Approved" or "Conditionally Approved."
+- **Refusal**: If the gate is closed, you **MUST** refuse to start work in the next phase.
+  > "I cannot start **[Phase X Work]** because **[Phase X-1 Gate]** is not approved. Please instruct the Program Analyst to conduct the gate review."
 
 ## Anti-Patterns to Avoid
 
@@ -217,7 +238,7 @@ Write as if you're a professional on a distributed team:
 At the start of each session:
 
 1. **Identify your project** — Determine if you're working on a specific project or at the template layer
-   - If project work: You'll be operating in `projects/[project-name]/`
+   - If project work: You'll be operating in the project's root directory
    - If template layer: You'll be updating shared directives, souls, or orchestration templates
 2. Read this CLAUDE.md file completely (shared context)
 3. Read your SOUL.md file at `.agent/souls/[YOUR_ROLE].md` (shared specialization)
@@ -225,16 +246,16 @@ At the start of each session:
 5. Read `directives/human-reporting-protocol.md` for reporting and approval gates (shared)
 6. Read `directives/ai-governance-framework.md` for AI governance lifecycle requirements (shared)
 7. If working on a project:
-   - Read `projects/[project-name]/PROJECT.md` for project scope and goals
-   - Check today's memory file at `projects/[project-name]/memory/[YYYY-MM-DD].md` for your assignment
-   - Review the task board at `projects/[project-name]/orchestration/tasks.md` for context
+   - Read `PROJECT.md` for project scope and goals
+   - Check today's memory file at `.agent/memory/[YYYY-MM-DD].md` for your assignment
+   - Review the task board at `.agent/tasks.md` for context
 8. Run the **Validate** (pre-flight) phase before beginning execution
 
 ## Continuous Learning
 
 When you encounter something that should be remembered long-term:
 
-- **Project-specific learning** — Add it to `projects/[project-name]/memory/MEMORY.md` under the appropriate section
+- **Project-specific learning** — Add it to `.agent/memory/MEMORY.md` under the appropriate section
 - **Cross-project patterns** — If it affects multiple projects or teams, also update `memory/MEMORY.md` at the repo root
 - **Coordination changes** — If it affects how agents coordinate, update this CLAUDE.md file
 - **Role-specific learning** — If it's specific to your specialization, update your SOUL.md file at `.agent/souls/[YOUR_ROLE].md`
@@ -243,8 +264,8 @@ When you encounter something that should be remembered long-term:
 
 If you're blocked or uncertain:
 
-1. Document the blocker in today's memory file at `projects/[project-name]/memory/[TODAY].md` (or `memory/[TODAY].md` if working at template layer)
-2. Update your task status to "Blocked" in `projects/[project-name]/orchestration/tasks.md`
+1. Document the blocker in today's memory file at `.agent/memory/[TODAY].md` (or `memory/[TODAY].md` if working at template layer)
+2. Update your task status to "Blocked" in `.agent/tasks.md`
 3. Tag the Scrum Master agent for assistance
 4. Continue with any unblocked work while waiting
 
@@ -259,7 +280,7 @@ To scaffold a new project:
 
 ---
 
-**Last Updated**: 2026-02-10
+**Last Updated**: 2026-02-11
 **Maintained By**: All agents contribute learnings
 **Review Frequency**: Updated as patterns emerge
 **Architecture**: Factory Model

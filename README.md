@@ -1,112 +1,201 @@
 # The AI Factory: Agentic Development Framework
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Governance: CPMAI](https://img.shields.io/badge/Governance-CPMAI%20v7-blue)](https://www.cognilytica.com/)
+[![Governance: CPMAI](https://img.shields.io/badge/Governance-CPMAI%20v7-blue)](https://www.pmi.org/certifications/ai-project-management-cpmai)
 [![Team: 14 Agents](https://img.shields.io/badge/Team-14%20Agents-green)](.agent/AGENT-ROSTER.md)
 
-**Executive Architect | AI Governance & Strategy**
+**A governance-first framework for orchestrating autonomous AI development teams.**
 
-## 🏗️ What is "The Factory"?
+---
+
+## What is "The Factory"?
 
 This repository is **not a software project**. It is a **Software Company in a Box**.
 
-It contains the "DNA" of a high-performance, compliant, and autonomous AI development team. It provides the **Governance Directives**, **Team Structure**, and **Process Orchestration** required to build enterprise-grade AI applications safely and efficiently.
+It contains the DNA of a high-performance, compliant, and autonomous AI development team: the **Governance Directives**, **Team Structure (Souls)**, **Process Orchestration**, and **Automation Scripts** required to build enterprise-grade applications safely and efficiently.
 
-### 🎯 Who is this for?
+### Who is this for?
 
 - **AI Architects & CTOs**: Who need a standardized, governed framework for Generative AI development.
-- **Enterprise Developers**: Who want to move beyond "vibes-based coding" to structured, engineering-grade agentic workflows.
-- **Consultants**: Who need a repeatable, compliant methodology for delivering AI client work.
+- **Enterprise Developers**: Who want to move beyond ad-hoc prompting to structured, engineering-grade agentic workflows.
+- **Consultants & PMs**: Who need a repeatable, compliant methodology for delivering AI-driven client work — even without coding experience.
 
 ---
 
-## 👥 The Team (14 Agent Souls)
+## Core Architecture
 
-The core of The Factory is its staff. We have defined 14 specialized "Agent Souls" in `.agent/souls/`. These are not generic assistants; they are role-specific personas with distinct responsibilities, tools, and constraints.
+The Factory uses a **Hub-and-Spoke** model:
 
-| Domain | Role | Responsibility |
-| :--- | :--- | :--- |
-| **Product** | **Requirements BA** | Elicits requirements, identifies stakeholders. |
-| | **User Story BA** | Converts requirements into technical User Stories (Gherkin/AC). |
-| **Engineering** | **Architecture SE** | Designs system architecture, technology selection. |
-| | **Documentation SE** | Maintains "Living Documentation" and technical specs. |
-| **Development** | **Frontend Dev** | UI/UX implementation, accessibility, client-side logic. |
-| | **Backend Dev** | API design, server-side logic, integrations. |
-| | **Database Eng** | Schema design, SQL optimization, data integrity. |
-| **Design** | **UI/UX Designer** | Wireframes, user flows, design system enforcement. |
-| **Quality** | **QA Engineer** | Manual testing, exploratory testing, bug reporting. |
-| | **Automation Eng** | CI test suites, E2E testing frameworks. |
-| **DevOps** | **Pipeline DevOps** | CI/CD construction, build automation. |
-| | **Performance DevOps** | Observability, load testing, resource optimization. |
-| **Management** | **Scrum Master** | Orchestration, blocker resolution, velocity tracking. |
-| **Governance** | **Program Analyst** | **The Auditor**. Enforces CPMAI/ISO compliance and phase gates. |
+| Layer | Purpose | Location |
+|:---|:---|:---|
+| **The Hub (This Repo)** | Team definitions, governance rules, templates | Factory root |
+| **The Spokes (Products)** | Individual apps built by the team | Separate repos, spawned from the scaffold |
 
----
-
-## 📜 The Directives (Governance Layer)
-
-The "Factory" operates under immutable laws defined in the `directives/` directory. No agent can override these.
-
-### 1. Enterprise AI Governance (`directives/ai-governance-framework.md`)
-
-A synthesis of **NIST AI RMF**, **ISO 42001**, and **CPMAI v7**. It mandates:
-
-- **6-Phase Lifecycle**: Business Understanding $\to$ Operationalization.
-- **Hard Phase Gates**: Work cannot proceed without specific evidence (e.g., *Bias Assessment*, *Threat Model*).
-
-### 2. Self-Annealing Protocol (`directives/self-annealing-protocol.md`)
-
-The "Immune System" of the factory. Every agent must follow the 4-step loop for every task:
-
-1. **Validate**: Pre-flight checks (Do I have what I need?).
-2. **Execute**: Perform the work.
-3. **Verify**: Self-review against requirements and strict constraints.
-4. **Correct**: Loop back and fix errors *before* handoff.
-
----
-
-## ⚙️ The Orchestration (Process Layer)
-
-How do 14 agents work together without chaos? We use a **Hub-and-Spoke** repository model.
-
-### The "Factory vs. Product" Model
-
-1. **The Hub (This Repo)**:
-    - Holds the *Team* (Souls) and *Rules* (Directives).
-    - Acts as the "Headquarters".
-
-2. **The Spokes (Product Repos)**:
-    - Independent repositories for applications (e.g., `ebook-forge`, `risk-app`).
-    - Created by copying the **Factory Scaffold**.
-
-### Workflow: Starting a New Project
-
-Don't clone this repo to build an app. Use it to *spawn* a project.
-
-```bash
-# 1. Create a new repository folder
-mkdir ../my-awesome-app
-cd ../my-awesome-app
-git init
-
-# 2. Inject the Factory DNA (The Scaffold)
-cp -r ../jdavis-cyber-workspace/directives/templates/project-scaffold/* .
-
-# 3. Code!
-# Now your agents (Claude/Gemini) will read your local GEMINI.md, 
-# which points them back to the Factory for their instructions.
+```
+ai-pm-builder-template/          # The Hub (Factory)
+├── .agent/
+│   ├── souls/                   # 14 Agent identity files
+│   ├── AGENT-ROSTER.md          # Team roster
+│   └── coordination/            # Handoff protocols
+├── directives/
+│   ├── ai-governance-framework.md
+│   ├── self-annealing-protocol.md
+│   ├── human-reporting-protocol.md
+│   ├── director-interview-protocol.md
+│   └── templates/
+│       ├── project-scaffold/    # 👈 Copy this to start a new project
+│       └── [26 governance templates]
+├── orchestration/               # Cross-project task templates
+├── memory/                      # Cross-project learnings
+├── CLAUDE.md                    # Agent context (Claude Code)
+├── GEMINI.md                    # Agent context (Antigravity)
+└── README.md                    # You are here
 ```
 
 ---
 
-## 🧠 Memory & Continuous Learning
+## The Team (14 Agent Souls)
 
-The Factory never forgets.
+Every soul file in `.agent/souls/` defines a specialized agent with distinct responsibilities, tools, verification checks, and behavioral constraints.
 
-- **`memory/MEMORY.md`**: Cross-project learnings. If the Database Engineer discovers a better way to index PostgreSQL, they record it here. All future projects benefit.
-- **`projects/[app]/memory/`**: Project-specific context.
+| Domain | Agent | Focus |
+|:---|:---|:---|
+| **Product** | Requirements BA | Stakeholder interviews, requirements elicitation |
+| | User Story BA | Gherkin/AC user stories, acceptance criteria |
+| **Engineering** | Architecture SE | System design, technology selection, diagrams |
+| | Documentation SE | Living documentation, technical specs |
+| **Development** | Backend Dev | APIs, server-side logic, integrations |
+| | Frontend Dev | UI implementation, accessibility, client-side logic |
+| | Database Engineer | Schema design, query optimization, data integrity |
+| **Design** | UI/UX Designer | Wireframes, user flows, design systems |
+| **Quality** | QA Engineer | Manual & exploratory testing, bug reporting |
+| | Automation Engineer | CI test suites, E2E frameworks |
+| **DevOps** | Pipeline DevOps | CI/CD construction, build automation |
+| | Performance DevOps | Observability, load testing, optimization |
+| **Management** | Scrum Master | Orchestration, velocity tracking, Session Zero |
+| **Governance** | Program Analyst | CPMAI/ISO compliance, phase gate enforcement |
 
 ---
 
-**Built with ❤️ by Jerome Davis**
-*Powered by Google Antigravity & Anthropic Claude*
+## Governance Layer
+
+The Factory operates under immutable directives in `directives/`. No agent can override these.
+
+### Enterprise AI Governance
+
+A synthesis of **NIST AI RMF**, **ISO 42001**, and **CPMAI v7** mandating a 6-phase lifecycle with hard phase gates. Work cannot proceed without specific evidence (Bias Assessment, Threat Model, etc.).
+
+### Self-Annealing Protocol
+
+The "immune system" of the Factory. Every agent follows a 4-step loop for every task:
+
+1. **Validate** — Pre-flight checks (Do I have what I need?)
+2. **Execute** — Perform the work
+3. **Verify** — Self-review against requirements
+4. **Correct** — Fix errors *before* handoff
+
+### Double-Lock Protocol
+
+Two hard stops prevent agents from skipping steps:
+
+- **Lock 1 (Scrum Master)**: No task starts without upstream artifacts present ("Definition of Ready")
+- **Lock 2 (Program Analyst)**: No phase advances without a passed Phase Gate
+
+---
+
+## Automation Layer
+
+The Factory includes a **Runner Script** that automates the agent orchestration loop.
+
+### Quick Start
+
+```bash
+# From inside a spawned project:
+./automation/factory.sh
+```
+
+### Two Operating Modes
+
+| Mode | How It Works | Best For |
+|:---|:---|:---|
+| **Assisted** (default) | Script finds the next task, generates the prompt, and pauses. You paste it into your agent. | Non-coders, manual control |
+| **Autonomous** | Script pipes prompts directly to your CLI tool (`claude`, `gemini`, etc.) in a continuous loop. | Hands-free execution |
+
+### Session Zero (Scrum Master)
+
+On first project initialization, the Scrum Master automatically:
+
+1. Asks the Director which LLM CLI they use
+2. Edits `automation/factory.sh` to configure the tool (no manual script editing)
+3. Initializes `PROJECT.md` and the task board
+4. Assigns the Requirements BA as the first task
+
+---
+
+## ROI Tracking
+
+The system tracks the "Value Delta" between human and AI effort:
+
+- **Human Estimate**: The Scrum Master estimates tasks at "Senior Developer" pace
+- **Agent Actual**: Agents log their real execution time
+- **Velocity Multiplier**: `Human Estimate / Agent Actual` — reported every sprint
+
+---
+
+## Starting a New Project
+
+Don't clone this repo to build an app. Use it to **spawn** a project:
+
+```bash
+# 1. Create a new project
+mkdir ../my-awesome-app && cd ../my-awesome-app
+git init
+
+# 2. Inject the Factory DNA
+cp -r ../ai-pm-builder-template/directives/templates/project-scaffold/* .
+cp -r ../ai-pm-builder-template/directives/templates/project-scaffold/.* . 2>/dev/null
+
+# 3. Summon the Scrum Master
+# "Act as the Scrum Master. Read .agent/souls/scrum-master.md and GEMINI.md.
+#  Initialize this project for a [your app idea]."
+```
+
+The Scrum Master will configure your automation, populate the task board, and the team is ready to work.
+
+### Spawned Project Structure (Hybrid)
+
+```
+my-awesome-app/                  # Code at root (developer-first)
+├── backend/
+├── frontend/
+├── database/
+├── .agent/                      # Hidden agent machinery
+│   ├── souls/                   # Agent identities
+│   ├── memory/                  # Handoff logs
+│   └── tasks.md                 # Task board
+├── .governance/                 # Hidden compliance artifacts
+├── automation/
+│   ├── factory.sh               # The Runner
+│   └── run_factory.py           # The Logic
+└── PROJECT.md                   # Project identity card
+```
+
+---
+
+## Memory & Continuous Learning
+
+- **`memory/MEMORY.md`** (Factory root): Cross-project learnings — all future projects benefit
+- **`.agent/memory/MEMORY.md`** (Each project): Project-specific context and decisions
+
+---
+
+## Built With
+
+- [Google Antigravity](https://antigravity.google/) — Primary agentic IDE
+- [Anthropic Claude Code](https://claude.ai/) — Complementary agentic IDE
+- [CPMAI v7](https://www.pmi.org/certifications/ai-project-management-cpmai) — AI project methodology
+
+---
+
+**Built by Jerome Davis**
+*Executive Architect | AI Governance & Strategy*

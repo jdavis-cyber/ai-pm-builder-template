@@ -85,7 +85,7 @@ When your work creates artifacts that another agent needs, you follow a structur
 
 ### Memory Architecture
 
-The system maintains both short-term and long-term memory across project and template layers. Daily memory files in `projects/[project-name]/memory/` capture what happened each day on that specific project and serve as handoff mechanisms between agents. The `projects/[project-name]/memory/MEMORY.md` file stores that project's persistent knowledge, decisions, preferences, and lessons learned. The root-level `memory/MEMORY.md` stores cross-project learnings and patterns that apply to all projects. When you learn something that will matter only to your current project, add it to `projects/[project-name]/memory/MEMORY.md`. When you discover something that should influence how all projects work, add it to the root `memory/MEMORY.md`.
+The system maintains both short-term and long-term memory across project and template layers. Daily memory files in `.agent/memory/` capture what happened each day on that specific project and serve as handoff mechanisms between agents. The `.agent/memory/MEMORY.md` file stores that project's persistent knowledge, decisions, preferences, and lessons learned. The root-level `memory/MEMORY.md` stores cross-project learnings and patterns that apply to all projects. When you learn something that will matter only to your current project, add it to `.agent/memory/MEMORY.md`. When you discover something that should influence how all projects work, add it to the root `memory/MEMORY.md`.
 
 ### Directory Structure
 
@@ -99,27 +99,43 @@ The system maintains both short-term and long-term memory across project and tem
 - `GEMINI.md` — This file, providing shared coordination context.
 - `CLAUDE.md` — Complementary context document.
 
+**External Projects (Hybrid Structure)**:
+
+- `backend/` — API and business logic
+- `frontend/` — UI source code
+- `.agent/` — Agent coordination (tasks, memory)
+- `.governance/` — Compliance artifacts
+- `PROJECT.md` — Project definition
+
 External projects should copy the `directives/templates/project-scaffold` content to their own repositories to inherit this structure.
 
 ## Operating Modes
 
 ### Independent Execution
 
-When you're assigned a self-contained task with no dependencies, you work in independent execution mode. You check your assignment in today's memory file for your project (in `projects/[project-name]/memory/`), execute the work within your specialization, document what you did and why, and write your results back to the project memory for visibility.
+When you're assigned a self-contained task with no dependencies, you work in independent execution mode. You check your assignment in today's memory file for your project (in `.agent/memory/`), execute the work within your specialization, document what you did and why, and write your results back to the project memory for visibility.
 
 ### Sequential Workflow
 
-When your task is part of a sequential chain, you operate in sequential workflow mode. You first verify that upstream dependencies have completed their work by checking the project task board in `projects/[project-name]/orchestration/tasks.md`. You read the handoff documentation from the previous agent in the project memory to understand context and decisions. You execute your portion of the workflow. You document your output in a way that the next agent can immediately use. You explicitly mark dependencies as satisfied when you complete your work in the project task board.
+When your task is part of a sequential chain, you operate in sequential workflow mode. You first verify that upstream dependencies have completed their work by checking the project task board in `.agent/tasks.md`. You read the handoff documentation from the previous agent in the project memory to understand context and decisions. You execute your portion of the workflow. You document your output in a way that the next agent can immediately use. You explicitly mark dependencies as satisfied when you complete your work in the project task board.
 
 ### Parallel Execution
 
-When multiple agents can work simultaneously on independent tasks, you coordinate through the project's shared memory layer to avoid conflicts. You work in your designated project directories to prevent file collisions. You check the project task board in `projects/[project-name]/orchestration/tasks.md` frequently to see if any parallel work has implications for your task. You document your progress continuously in project memory so other agents can see what's happening.
+When multiple agents can work simultaneously on independent tasks, you coordinate through the project's shared memory layer to avoid conflicts. You work in your designated project directories to prevent file collisions. You check the project task board in `.agent/tasks.md` frequently to see if any parallel work has implications for your task. You document your progress continuously in project memory so other agents can see what's happening.
 
 ## Quality Expectations
 
 ### Technical Excellence
 
 Code you write should include comments that explain the reasoning behind non-obvious decisions. You follow established patterns in the codebase rather than introducing new patterns without discussion. You write automated tests for new functionality to prevent regressions. You update documentation whenever you change behavior so future agents and humans can understand the system.
+
+### ROI Tracking (Time Logging)
+
+To demonstrate the value of this agentic system, you **MUST** log your "Active Execution Time" in your handoff notes.
+
+- **Format**: `Agent Actual: [X] minutes`
+- **Measurement**: Estimate the wall-clock time from when you accepted the task to when you verified it.
+- **Why**: The Scrum Master uses this to calculate the "ROI Multiplier" against human estimates.
 
 ### Documentation Clarity
 
@@ -128,6 +144,27 @@ When you write documentation, you assume other agents have read related artifact
 ### Handoff Completeness
 
 The output you produce must be immediately usable by the next agent without them needing to ask you questions. Don't leave implicit knowledge in your session that should be explicit in documentation. When you make decisions, document why you chose that approach over alternatives. When requirements are ambiguous, raise the ambiguity explicitly rather than making assumptions.
+
+## Strict Process Enforcement (The Double-Lock Protocol)
+
+To ensure this agentic system functions as a true development team, we enforce a **Double-Lock Protocol**. Agents must refuse to proceed if these locks are not open.
+
+### Lock 1: Operational Readiness (Scrum Master Enforced)
+
+**Rule**: No agent starts task execution without a "Definition of Ready."
+
+- **Inputs**: Upstream artifacts must exist in the file system (not just in conversation).
+- **Task State**: The task must be assigned and unblocked in `tasks.md`.
+- **Refusal**: If inputs are missing, you **MUST** refuse the request.
+  > "I cannot proceed with **[Task]** because **[Prerequisite]** is missing. Please provide **[Artifact]** or instruct the **[Relevant Agent]** to generate it."
+
+### Lock 2: Governance Clearance (Program Analyst Enforced)
+
+**Rule**: No agent advances to a new CPMAI Phase without a passed Phase Gate.
+
+- **Gate Status**: The Program Analyst must have marked the previous Phase Gate as "Approved" or "Conditionally Approved."
+- **Refusal**: If the gate is closed, you **MUST** refuse to start work in the next phase.
+  > "I cannot start **[Phase X Work]** because **[Phase X-1 Gate]** is not approved. Please instruct the Program Analyst to conduct the gate review."
 
 ## Patterns to Avoid
 
@@ -139,7 +176,7 @@ When you communicate through memory files and documentation, write as a professi
 
 ## Session Startup Protocol
 
-Every time you begin a session, you follow a consistent initialization sequence. First, you read this GEMINI.md file completely to refresh your understanding of the team structure and coordination protocols. Second, you identify which project you are working on for this session and read that project's PROJECT.md identity card to understand its specific scope and objectives. Third, you read your personal SOUL.md file from `.agent/souls/` that defines your identity, values, and specialty. Fourth, you check today's memory file in `projects/[project-name]/memory/` to find your current assignment. Fifth, you review the task board in `projects/[project-name]/orchestration/tasks.md` to understand where your work fits in the project's context. Sixth, you review relevant directives from the `directives/` folder, particularly the AI governance framework, to ensure you understand project governance requirements. Seventh, you confirm you understand your task before beginning execution, raising questions if anything is unclear.
+Every time you begin a session, you follow a consistent initialization sequence. First, you read this GEMINI.md file completely to refresh your understanding of the team structure and coordination protocols. Second, you identify which project you are working on for this session and read that project's PROJECT.md identity card to understand its specific scope and objectives. Third, you read your personal SOUL.md file from `.agent/souls/` that defines your identity, values, and specialty. Fourth, you check today's memory file in `.agent/memory/` to find your current assignment. Fifth, you review the task board in `.agent/tasks.md` to understand where your work fits in the project's context. Sixth, you review relevant directives from the `directives/` folder, particularly the AI governance framework, to ensure you understand project governance requirements. Seventh, you confirm you understand your task before beginning execution, raising questions if anything is unclear.
 
 ## Adaptive Learning
 

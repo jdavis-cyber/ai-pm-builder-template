@@ -40,11 +40,11 @@ This project was built using the AI PM Builder's Template governance framework. 
 
 | Artifact | Status | Location |
 |----------|--------|----------|
-| Mission Risk Profile | [Draft/Complete/N/A] | `governance/Phase_Gates/Gate1_BusinessUnderstanding/` |
-| Governance Scope Statement | [Draft/Complete/N/A] | `governance/Phase_Gates/Gate1_BusinessUnderstanding/` |
-| Architecture Decision Records | [Draft/Complete/N/A] | `execution/architecture/` |
-| Phase Gate Reviews | [Draft/Complete/N/A] | `governance/Phase_Gates/` |
-| Risk Register | [Draft/Complete/N/A] | `governance/Cross_Cutting/Risk_Register/` |
+| Mission Risk Profile | [Draft/Complete/N/A] | `.governance/Phase_Gates/Gate1_BusinessUnderstanding/` |
+| Governance Scope Statement | [Draft/Complete/N/A] | `.governance/Phase_Gates/Gate1_BusinessUnderstanding/` |
+| Architecture Decision Records | [Draft/Complete/N/A] | `architecture/` |
+| Phase Gate Reviews | [Draft/Complete/N/A] | `.governance/Phase_Gates/` |
+| Risk Register | [Draft/Complete/N/A] | `.governance/Cross_Cutting/Risk_Register/` |
 
 ## Lessons Learned
 
