@@ -1,55 +1,69 @@
-# The AI Factory: Agentic Development Framework
+# The AI Factory: Autonomous Project Workspace
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Governance: CPMAI](https://img.shields.io/badge/Governance-CPMAI%20v7-blue)](https://www.pmi.org/certifications/ai-project-management-cpmai)
 [![Team: 14 Agents](https://img.shields.io/badge/Team-14%20Agents-green)](.agent/AGENT-ROSTER.md)
 
-**A governance-first framework for orchestrating autonomous AI development teams.**
+**A fully autonomous, self-governing AI software team in a single repository.**
 
 ---
 
-## What is "The Factory"?
+## What is this?
 
-This repository is **not a software project**. It is a **Software Company in a Box**.
+This is **not a template**. This is your **Active Workspace**.
 
-It contains the DNA of a high-performance, compliant, and autonomous AI development team: the **Governance Directives**, **Team Structure (Souls)**, **Process Orchestration**, and **Automation Scripts** required to build enterprise-grade applications safely and efficiently.
+It contains a complete 14-agent software development team, pre-configured with:
 
-### Who is this for?
+* **Role-Based Identities** (Souls)
+* **Strict Governance** (Directives)
+* **Automated Workflow** (Orchestration)
+* **Compliance Verification** (Evidence)
 
-- **AI Architects & CTOs**: Who need a standardized, governed framework for Generative AI development.
-- **Enterprise Developers**: Who want to move beyond ad-hoc prompting to structured, engineering-grade agentic workflows.
-- **Consultants & PMs**: Who need a repeatable, compliant methodology for delivering AI-driven client work — even without coding experience.
+You do not "use" this repo. You **hire** it.
 
 ---
 
-## Core Architecture
+## Quick Start: Session Zero
 
-The Factory uses a **Hub-and-Spoke** model:
+You don't need to manually configure anything. The **Scrum Master** handles initialization.
 
-| Layer | Purpose | Location |
-|:---|:---|:---|
-| **The Hub (This Repo)** | Team definitions, governance rules, templates | Factory root |
-| **The Spokes (Products)** | Individual apps built by the team | Separate repos, spawned from the scaffold |
+### 1. Initialize the Agent
+
+Open this folder in your AI IDE (Antigravity or Claude Code) and say:
+
+> "Initialize the project."
+
+### 2. Session Zero Interview
+
+The Scrum Master will wake up, detect the empty project, and immediately interview you:
+
+* "What are we building?"
+* "What are the goals?"
+* "Which AI model should we use?"
+
+### 3. Autonomy Engaged
+
+The team immediately begins work right here in this folder. No copying files, no switching directories.
+
+---
+
+## Workspace Structure
+
+Your project lives here, co-located with the AI team that builds it.
 
 ```
-ai-pm-builder-template/          # The Hub (Factory)
-├── .agent/
-│   ├── souls/                   # 14 Agent identity files
-│   ├── AGENT-ROSTER.md          # Team roster
-│   └── coordination/            # Handoff protocols
-├── directives/
-│   ├── ai-governance-framework.md
-│   ├── self-annealing-protocol.md
-│   ├── human-reporting-protocol.md
-│   ├── director-interview-protocol.md
-│   └── templates/
-│       ├── project-scaffold/    # 👈 Copy this to start a new project
-│       └── [26 governance templates]
-├── orchestration/               # Cross-project task templates
-├── memory/                      # Cross-project learnings
-├── CLAUDE.md                    # Agent context (Claude Code)
-├── GEMINI.md                    # Agent context (Antigravity)
-└── README.md                    # You are here
+./
+├── execution/                   # 👈 YOUR CODE LIVES HERE
+│   ├── backend/
+│   ├── frontend/
+│   └── database/
+├── .agent/                      # The Team (Souls & Tasks)
+├── .governance/                 # Compliance Evidence (Hidden)
+├── directives/                  # Immutable Rules (Constitution)
+├── automation/                  # Factory Runner Scripts
+├── PROJECT.md                   # Project Identity Card
+├── GEMINI.md                    # Agent Context
+└── CLAUDE.md                    # Agent Context
 ```
 
 ---
@@ -77,58 +91,23 @@ Every soul file in `.agent/souls/` defines a specialized agent with distinct res
 
 ---
 
-## Governance Layer
-
-The Factory operates under immutable directives in `directives/`. No agent can override these.
-
-### Enterprise AI Governance
-
-A synthesis of **NIST AI RMF**, **ISO 42001**, and **CPMAI v7** mandating a 6-phase lifecycle with hard phase gates. Work cannot proceed without specific evidence (Bias Assessment, Threat Model, etc.).
+## How It Works
 
 ### Self-Annealing Protocol
 
-The "immune system" of the Factory. Every agent follows a 4-step loop for every task:
+Every agent follows a 4-step loop for every task:
 
 1. **Validate** — Pre-flight checks (Do I have what I need?)
 2. **Execute** — Perform the work
 3. **Verify** — Self-review against requirements
 4. **Correct** — Fix errors *before* handoff
 
-### Double-Lock Protocol
+### Double-Lock Governance
 
 Two hard stops prevent agents from skipping steps:
 
-- **Lock 1 (Scrum Master)**: No task starts without upstream artifacts present ("Definition of Ready")
-- **Lock 2 (Program Analyst)**: No phase advances without a passed Phase Gate
-
----
-
-## Automation Layer
-
-The Factory includes a **Runner Script** that automates the agent orchestration loop.
-
-### Quick Start
-
-```bash
-# From inside a spawned project:
-./automation/factory.sh
-```
-
-### Two Operating Modes
-
-| Mode | How It Works | Best For |
-|:---|:---|:---|
-| **Assisted** (default) | Script finds the next task, generates the prompt, and pauses. You paste it into your agent. | Non-coders, manual control |
-| **Autonomous** | Script pipes prompts directly to your CLI tool (`claude`, `gemini`, etc.) in a continuous loop. | Hands-free execution |
-
-### Session Zero (Scrum Master)
-
-On first project initialization, the Scrum Master automatically:
-
-1. Asks the Director which LLM CLI they use
-2. Edits `automation/factory.sh` to configure the tool (no manual script editing)
-3. Initializes `PROJECT.md` and the task board
-4. Assigns the Requirements BA as the first task
+* **Lock 1 (Scrum Master)**: No task starts without "Definition of Ready".
+* **Lock 2 (Program Analyst)**: No phase advances without a passed Phase Gate.
 
 ---
 
@@ -136,64 +115,17 @@ On first project initialization, the Scrum Master automatically:
 
 The system tracks the "Value Delta" between human and AI effort:
 
-- **Human Estimate**: The Scrum Master estimates tasks at "Senior Developer" pace
-- **Agent Actual**: Agents log their real execution time
-- **Velocity Multiplier**: `Human Estimate / Agent Actual` — reported every sprint
-
----
-
-## Starting a New Project
-
-Don't clone this repo to build an app. Use it to **spawn** a project:
-
-```bash
-# 1. Create a new project
-mkdir ../my-awesome-app && cd ../my-awesome-app
-git init
-
-# 2. Inject the Factory DNA
-cp -r ../ai-pm-builder-template/directives/templates/project-scaffold/* .
-cp -r ../ai-pm-builder-template/directives/templates/project-scaffold/.* . 2>/dev/null
-
-# 3. Summon the Scrum Master
-# "Act as the Scrum Master. Read .agent/souls/scrum-master.md and GEMINI.md.
-#  Initialize this project for a [your app idea]."
-```
-
-The Scrum Master will configure your automation, populate the task board, and the team is ready to work.
-
-### Spawned Project Structure (Hybrid)
-
-```
-my-awesome-app/                  # Code at root (developer-first)
-├── backend/
-├── frontend/
-├── database/
-├── .agent/                      # Hidden agent machinery
-│   ├── souls/                   # Agent identities
-│   ├── memory/                  # Handoff logs
-│   └── tasks.md                 # Task board
-├── .governance/                 # Hidden compliance artifacts
-├── automation/
-│   ├── factory.sh               # The Runner
-│   └── run_factory.py           # The Logic
-└── PROJECT.md                   # Project identity card
-```
-
----
-
-## Memory & Continuous Learning
-
-- **`memory/MEMORY.md`** (Factory root): Cross-project learnings — all future projects benefit
-- **`.agent/memory/MEMORY.md`** (Each project): Project-specific context and decisions
+* **Human Estimate**: The Scrum Master estimates tasks at "Senior Developer" pace.
+* **Agent Actual**: Agents log their real execution time.
+* **Velocity Multiplier**: `Human Estimate / Agent Actual` — reported every sprint.
 
 ---
 
 ## Built With
 
-- [Google Antigravity](https://antigravity.google/) — Primary agentic IDE
-- [Anthropic Claude Code](https://claude.ai/) — Complementary agentic IDE
-- [CPMAI v7](https://www.pmi.org/certifications/ai-project-management-cpmai) — AI project methodology
+* [Google Antigravity](https://antigravity.google/) — Primary agentic IDE
+* [Anthropic Claude Code](https://claude.ai/) — Complementary agentic IDE
+* [CPMAI v7](https://www.pmi.org/certifications/ai-project-management-cpmai) — AI project methodology
 
 ---
 
