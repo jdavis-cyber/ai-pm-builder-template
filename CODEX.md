@@ -1,22 +1,20 @@
-# Gemini/Antigravity - Multi-Agent Orchestration Context
+# Codex/OpenAI - Multi-Agent Orchestration Context
 
 ## 1. MANDATORY: Session Startup Protocol (Double-Lock Check)
 
 Every agent MUST follow this sequence. Skipping steps or the order of files below is a Process Violation.
 
 1. **PROJECT.md**: Read the current mission and scope.
-2. **GEMINI.md**: [THIS FILE] Verify the team structure and your specific mandate.
+2. **CODEX.md**: [THIS FILE] Verify the team structure and your specific mandate.
 3. **structural-integrity-protocol.md**: Read the Phase Gate and "Traffic Cop" requirements.
 4. **ai-governance-framework.md**: Refresh the compliance obligations for your domain.
 5. **orchestration/tasks.md**: Check the current Sprint. **IF THE PREVIOUS PHASE GATE IS NOT "APPROVED" BY THE PM/PO, YOU MUST STOP AND ASK FOR CLEARANCE.**
 
 ---
 
----
-
 ## 2. Project Philosophy: Discovery-First Execution
 
-**Note**: This file (`GEMINI.md`) and `CLAUDE.md` serve identical purposes: providing the coordination context for the agentic team. Use the file corresponding to your active model/agent identity. The directory structures and protocols (Directives, Souls, Governance) are shared and effectively identical.
+**Note**: This file (`CODEX.md`), `GEMINI.md`, and `CLAUDE.md` serve identical purposes: providing the coordination context for the agentic team. Use the file corresponding to your active model/agent identity. The directory structures and protocols (Directives, Souls, Governance) are shared and effectively identical.
 
 This repository is a **Professional AI Development Factory**. We do not "guess" or "rushing into code." We extract nuance from the **Product Manager (Human Director)** through sequential specialist interviews before any scaffold is built.
 
@@ -91,7 +89,7 @@ Every agent follows the **Annealing Loop** for every task. Passivity is failure.
 - `docs/` — The Shared Discovery Hub (Knowledge Hub).
 - `execution/` — Source code and implementation artifacts.
 - `.governance/` — Final authored compliance artifacts.
-- `GEMINI.md` — This file (Coordination Context).
+- `CODEX.md` — This file (Coordination Context).
 - `PROJECT.md` — Project definition and scope.
 
 ---

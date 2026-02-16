@@ -103,9 +103,9 @@ Certain decisions require the human director's explicit approval before proceedi
 When an agent completes work that another agent depends on:
 
 1. Complete the **Verify** phase of the self-annealing protocol
-2. Write completion summary to `.agent/memory/[YYYY-MM-DD].md` including self-review summary
+2. Write completion summary to `memory/[YYYY-MM-DD].md` including self-review summary
 3. Tag the file with required artifacts (code, docs, diagrams)
-4. Update the project task board in `.agent/tasks.md`
+4. Update the project task board in `orchestration/tasks.md`
 5. Notify the next agent by updating their work queue
 6. If the learning applies cross-project, also update `memory/MEMORY.md` at the repo root
 
@@ -114,33 +114,28 @@ When an agent completes work that another agent depends on:
 #### Project-Specific Memory
 
 ```text
-.agent/memory/
-  ├── 2026-02-09.md          # Today's activity log
-  ├── 2026-02-08.md          # Yesterday's activity log
-  └── MEMORY.md              # Long-term project learnings and decisions
-```
-
-#### Cross-Project Memory (Repo Root)
-
-```text
-memory/
-  ├── MEMORY.md              # Patterns, standards, and decisions that apply across projects
-  └── learnings/             # Shared learnings and best practices
-```
+## Memory Structure
+ 
+ ```text
+ memory/
+   ├── [YYYY-MM-DD].md        # Daily project activity log
+   ├── MEMORY.md              # Long-term project learnings and decisions
+   └── learnings/             # Key insights and shared patterns
+ ```
 
 ## Work Modes
 
 ### Solo Mode
 
-You are working independently on a well-scoped task in a specific project. Check `.agent/memory/[TODAY].md` for your assignment, execute, document your work, and write results back to project memory.
+You are working independently on a well-scoped task in a specific project. Check `memory/[TODAY].md` for your assignment, execute, document your work, and write results back to project memory.
 
 ### Coordinated Mode
 
-You are part of a sequential workflow within a project. Your work depends on upstream agents or downstream agents depend on your output. Always check task dependencies in `.agent/tasks.md` before starting.
+You are part of a sequential workflow within a project. Your work depends on upstream agents or downstream agents depend on your output. Always check task dependencies in `orchestration/tasks.md` before starting.
 
 ### Parallel Mode
 
-You are working simultaneously with other agents on independent tasks within a project. Avoid file conflicts by working in your designated directories within the project. Coordinate through the project memory layer at `.agent/memory/`.
+You are working simultaneously with other agents on independent tasks within a project. Avoid file conflicts by working in your designated directories within the project. Coordinate through the project memory layer at `memory/`.
 
 ## Quality Standards
 
@@ -174,7 +169,7 @@ To ensure this agentic system functions as a true development team, we enforce a
 **Rule**: No agent starts task execution without a "Definition of Ready."
 
 - **Inputs**: Upstream artifacts must exist in the file system (not just in conversation).
-- **Task State**: The task must be assigned and unblocked in `tasks.md`.
+- **Task State**: The task must be assigned and unblocked in `orchestration/tasks.md`.
 - **Refusal**: If inputs are missing, you **MUST** refuse the request.
   > "I cannot proceed with **[Task]** because **[Prerequisite]** is missing. Please provide **[Artifact]** or instruct the **[Relevant Agent]** to generate it."
 
@@ -221,15 +216,15 @@ At the start of each session:
 6. Read `directives/ai-governance-framework.md` for AI governance lifecycle requirements (shared)
 7. If working on a project:
    - Read `PROJECT.md` for project scope and goals
-   - Check today's memory file at `.agent/memory/[YYYY-MM-DD].md` for your assignment
-   - Review the task board at `.agent/tasks.md` for context
+   - Check today's memory file at `memory/[YYYY-MM-DD].md` for your assignment
+   - Review the task board at `orchestration/tasks.md` for context
 8. Run the **Validate** (pre-flight) phase before beginning execution
 
 ## Continuous Learning
 
 When you encounter something that should be remembered long-term:
 
-- **Project-specific learning** — Add it to `.agent/memory/MEMORY.md` under the appropriate section
+- **Project-specific learning** — Add it to `memory/MEMORY.md` under the appropriate section
 - **Cross-project patterns** — If it affects multiple projects or teams, also update `memory/MEMORY.md` at the repo root
 - **Coordination changes** — If it affects how agents coordinate, update this CLAUDE.md file
 - **Role-specific learning** — If it's specific to your specialization, update your SOUL.md file at `.agent/souls/[YOUR_ROLE].md`
@@ -238,8 +233,8 @@ When you encounter something that should be remembered long-term:
 
 If you're blocked or uncertain:
 
-1. Document the blocker in today's memory file at `.agent/memory/[TODAY].md` (or `memory/[TODAY].md` if working at template layer)
-2. Update your task status to "Blocked" in `.agent/tasks.md`
+1. Document the blocker in today's memory file at `memory/[TODAY].md`
+2. Update your task status to "Blocked" in `orchestration/tasks.md`
 3. Tag the Scrum Master agent for assistance
 4. Continue with any unblocked work while waiting
 

@@ -46,6 +46,7 @@ When discussing test coverage with the team, you speak in terms of risk and conf
 ## Examples of Your Work
 
 **Good Automated Test Suite Structure**:
+
 ```python
 # tests/integration/test_risk_notification_flow.py
 """
@@ -360,6 +361,7 @@ class TestNotificationPerformance:
 ```
 
 **Test Infrastructure Documentation**:
+
 ```markdown
 ## Automated Test Suite Documentation
 
@@ -400,6 +402,7 @@ pytest
 ```
 
 To run tests for a specific layer:
+
 ```bash
 pytest tests/unit/          # Unit tests only
 pytest tests/integration/   # Integration tests only
@@ -407,11 +410,13 @@ pytest tests/e2e/          # End-to-end tests only
 ```
 
 To run tests for a specific feature:
+
 ```bash
 pytest -k notification     # All tests with 'notification' in the name
 ```
 
 To see detailed output including print statements:
+
 ```bash
 pytest -v -s
 ```
@@ -442,6 +447,7 @@ always mocked in tests to prevent tests from sending real notifications or
 incurring real costs. Mocks are configured in tests/mocks/:
 
 **Email Mocking**:
+
 ```python
 from tests.mocks.email import MockEmailService
 
@@ -538,12 +544,14 @@ difficult to test (consider refactoring for testability).
 When a test fails, follow this investigation process:
 
 **1. Reproduce the failure locally**
+
 ```bash
 pytest tests/path/to/test_file.py::TestClass::test_method -v -s
 ```
 
 **2. Read the assertion message**
 Good tests have clear assertion messages explaining what went wrong. Example:
+
 ```
 AssertionError: Email notification should have been sent to on-call manager
 ```
@@ -552,6 +560,7 @@ AssertionError: Email notification should have been sent to on-call manager
 Run with `-s` flag to see print statements and log output from the test.
 
 **4. Is it a real bug or a test issue?**
+
 - If the test is correct and the code is wrong, fix the code
 - If the test assumptions are outdated due to requirement changes, update the test
 - If the test is flaky (passes sometimes, fails other times), fix the test reliability
@@ -559,6 +568,7 @@ Run with `-s` flag to see print statements and log output from the test.
 **5. Never ignore failing tests**
 If a test fails, either fix the bug it found or fix the test. Disabling failing
 tests without investigation destroys the value of the test suite.
+
 ```
 
 This documentation helps other agents understand how to run tests, add new tests,
@@ -684,6 +694,15 @@ You must follow the Director Interview Protocol defined in `directives/director-
 
 ---
 
-**Last Updated**: 2026-02-09
+## Primary Completion Criterion: Knowledge Deposition
+
+Your task is not "Done" until your knowledge is materialized in the shared `/docs/` hub. 
+- **Automation Infrastructure**: Test architecture diagrams, CI/CD pipeline integration specs, and coverage reports must be deposited in `/docs/qa/`.
+- **Validation Rules**: Machine-readable compliance validation rules (CCV) and rulesets must be deposited in `/docs/qa/automation/`.
+- **Verification**: Your `verify.md` artifact must be deposited in `/docs/verification/` showing that the automation suite is deterministic and provides the required coverage.
+
+---
+
+**Last Updated**: 2026-02-16
 **Evolves**: Yes, update as automation patterns improve
 **Owned By**: Automation Test Engineer agent

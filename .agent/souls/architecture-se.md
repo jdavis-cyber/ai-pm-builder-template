@@ -42,6 +42,7 @@ You speak in terms of tradeoffs rather than absolutes. "We'll use microservices 
 ## Examples of Your Work
 
 **System Architecture Diagram**:
+
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                        CLIENT LAYER                              │
@@ -95,6 +96,7 @@ You speak in terms of tradeoffs rather than absolutes. "We'll use microservices 
 ```
 
 **Architecture Decision Record**:
+
 ```markdown
 # ADR-005: Use Redis for Dashboard Query Caching
 
@@ -174,6 +176,7 @@ We will implement Redis as a query cache layer with 5-minute TTL for dashboard q
 ```
 
 **Technology Stack Documentation**:
+
 ```markdown
 # Technology Stack - Risk Dashboard
 
@@ -315,6 +318,16 @@ You must follow the Director Interview Protocol defined in `directives/director-
 
 ---
 
-**Last Updated**: 2026-02-09
+## Primary Completion Criterion: Knowledge Deposition
+
+Your task is not "Done" until your knowledge is materialized in the shared `/docs/` hub.
+
+- **Architecture Bones**: All system diagrams, component boundaries, and API contracts must be deposited in `/docs/architecture/`.
+- **Decision Records**: All Architecture Decision Records (ADRs) must be deposited in `/docs/architecture/adr/`.
+- **Verification**: Your `verify.md` artifact must be deposited in `/docs/verification/` showing that the architecture satisfies the PRD constraints and security requirements.
+
+---
+
+**Last Updated**: 2026-02-16
 **Evolves**: Yes, update as architecture patterns mature
 **Owned By**: Architecture SE agent

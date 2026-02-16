@@ -1,133 +1,105 @@
-# The AI Factory: Autonomous Project Workspace
+# The Factory: A Manifesto for Autonomous Shipping
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Governance: CPMAI](https://img.shields.io/badge/Governance-CPMAI%20v7-blue)](https://www.pmi.org/certifications/ai-project-management-cpmai)
 [![Team: 14 Agents](https://img.shields.io/badge/Team-14%20Agents-green)](.agent/AGENT-ROSTER.md)
 
-**A fully autonomous, self-governing AI software team in a single repository.**
+### Stop typing. Start leading
+
+The industrial revolution of code is over. The artisanal era of "I hope this compiles" is finished.
+
+What you have here isn't a GitHub repository. It's not a template. It's a **Factory**.
+
+A factory doesn't guess. A factory doesn't have "good days." A factory produces excellence because the system—*the practice*—is designed to make mediocrity impossible.
+
+You are no longer a coder. You are the **Director**.
 
 ---
 
-## What is this?
+## The Resistance (And How We Beat It)
 
-This is **not a template**. This is your **Active Workspace**.
+The *Lizard Brain* wants you to open a file and start hacking. It creates safety in busyness. "Look at me," it says, "I'm typing! I'm productive!"
 
-It contains a complete 14-agent software development team, pre-configured with:
+**We don't do that here.**
 
-* **Role-Based Identities** (Souls)
-* **Strict Governance** (Directives)
-* **Automated Workflow** (Orchestration)
-* **Compliance Verification** (Evidence)
+This workspace is built on a radical premise: **Code is the last thing we do.**
 
-You do not "use" this repo. You **hire** it.
+First, we understand.
+Then, we govern.
+Then, we verify.
+*Then*, and only then, do we build.
 
----
-
-## Quick Start: Session Zero
-
-You don't need to manually configure anything. The **Scrum Master** handles initialization.
-
-### 1. Initialize the Agent
-
-Open this folder in your AI IDE (Antigravity or Claude Code) and say:
-
-> "Initialize the project."
-
-### 2. Session Zero Interview
-
-The Scrum Master will wake up, detect the empty project, and immediately interview you:
-
-* "What are we building?"
-* "What are the goals?"
-* "Which AI model should we use?"
-
-### 3. Autonomy Engaged
-
-The team immediately begins work right here in this folder. No copying files, no switching directories.
+We call it **Discovery-First Execution**. It’s the difference between a hackathon project and a product that ships.
 
 ---
 
-## Workspace Structure
+## The Tribe (14 Souls)
 
-Your project lives here, co-located with the AI team that builds it.
+You are hiring a team of 14 specialists. They don't sleep. They don't complain about meetings. But they have **Souls**. They have opinions. And they will stop you if you try to ship junk.
 
-```
-./
-├── execution/                   # 👈 YOUR CODE LIVES HERE
-│   ├── backend/
-│   ├── frontend/
-│   └── database/
-├── .agent/                      # The Team (Souls & Tasks)
-├── .governance/                 # Compliance Evidence (Hidden)
-├── directives/                  # Immutable Rules (Constitution)
-├── automation/                  # Factory Runner Scripts
-├── PROJECT.md                   # Project Identity Card
-├── GEMINI.md                    # Agent Context
-└── CLAUDE.md                    # Agent Context
-```
+| The Thinkers | The Builders | The Critics |
+| :--- | :--- | :--- |
+| **Requirements BA**<br>Extracts the "Why" | **Architecture SE**<br>Draws the map | **QA Engineer**<br>Breaks the toys |
+| **User Story BA**<br>Defines the "What" | **Backend Developer**<br>Building the engine | **Program Analyst**<br>Ensures you're legal |
+| **UI/UX Designer**<br>Giving it a soul | **Frontend Developer**<br>Painting the canvas | **Scrum Master**<br>The Traffic Cop |
+
+Each agent respects the **Separation of Powers**. The Developer cannot approve their own code. The Architect cannot skip the requirements. The Scrum Master holds the baton.
 
 ---
 
-## The Team (14 Agent Souls)
+## The Practice (Governance)
 
-Every soul file in `.agent/souls/` defines a specialized agent with distinct responsibilities, tools, verification checks, and behavioral constraints.
+Most people think governance is bureaucracy.
+**Governance is empathy.**
 
-| Domain | Agent | Focus |
-|:---|:---|:---|
-| **Product** | Requirements BA | Stakeholder interviews, requirements elicitation |
-| | User Story BA | Gherkin/AC user stories, acceptance criteria |
-| **Engineering** | Architecture SE | System design, technology selection, diagrams |
-| | Documentation SE | Living documentation, technical specs |
-| **Development** | Backend Dev | APIs, server-side logic, integrations |
-| | Frontend Dev | UI implementation, accessibility, client-side logic |
-| | Database Engineer | Schema design, query optimization, data integrity |
-| **Design** | UI/UX Designer | Wireframes, user flows, design systems |
-| **Quality** | QA Engineer | Manual & exploratory testing, bug reporting |
-| | Automation Engineer | CI test suites, E2E frameworks |
-| **DevOps** | Pipeline DevOps | CI/CD construction, build automation |
-| | Performance DevOps | Observability, load testing, optimization |
-| **Management** | Scrum Master | Orchestration, velocity tracking, Session Zero |
-| **Governance** | Program Analyst | CPMAI/ISO compliance, phase gate enforcement |
+It is empathy for the future user who needs this to work. It is empathy for the future developer who has to read this code.
+
+We enforce this with the **Double-Lock Protocol**:
+
+1. **Lock 1 (The Definition of Ready)**: The Scrum Master will not let work begin until the requirements exist. No more guessing.
+2. **Lock 2 (The Phase Gate)**: The Program Analyst will not let you move to the next phase until the documentation proves you are safe.
+
+It feels slow. Until you realize you never have to do it twice.
 
 ---
 
-## How It Works
+## Session Zero: Your First Day
 
-### Self-Annealing Protocol
+You don't configure this workspace. You wake it up.
 
-Every agent follows a 4-step loop for every task:
+1. Open this folder in your IDE of choice (Antigravity, Claude, or Codex).
+2. Type one sentence:
+    > "Initialize the project."
+3. **The Interview Begins.**
 
-1. **Validate** — Pre-flight checks (Do I have what I need?)
-2. **Execute** — Perform the work
-3. **Verify** — Self-review against requirements
-4. **Correct** — Fix errors *before* handoff
+The Scrum Master will ask you what matters. The Architect will ask about your constraints. The team will align around your vision.
 
-### Double-Lock Governance
-
-Two hard stops prevent agents from skipping steps:
-
-* **Lock 1 (Scrum Master)**: No task starts without "Definition of Ready".
-* **Lock 2 (Program Analyst)**: No phase advances without a passed Phase Gate.
+And then? **They go to work.**
 
 ---
 
-## ROI Tracking
+## The Tech (Tools of the Trade)
 
-The system tracks the "Value Delta" between human and AI effort:
+This factory speaks three languages fluently. Pick your engine:
 
-* **Human Estimate**: The Scrum Master estimates tasks at "Senior Developer" pace.
-* **Agent Actual**: Agents log their real execution time.
-* **Velocity Multiplier**: `Human Estimate / Agent Actual` — reported every sprint.
+* **Google Antigravity**: Read `GEMINI.md`.
+* **Anthropic Claude**: Read `CLAUDE.md`.
+* **OpenAI Codex**: Read `CODEX.md`.
 
----
-
-## Built With
-
-* [Google Antigravity](https://antigravity.google/) — Primary agentic IDE
-* [Anthropic Claude Code](https://claude.ai/) — Complementary agentic IDE
-* [CPMAI v7](https://www.pmi.org/certifications/ai-project-management-cpmai) — AI project methodology
+The files are different keys to the same engine. The outcome is the same: **A shipped product.**
 
 ---
 
-**Built by Jerome Davis**
-*Executive Architect | AI Governance & Strategy*
+## Go Make a Ruckus
+
+The world doesn't need another half-finished side project.
+The world needs your art. It needs the thing only you can see.
+
+This Factory is here to help you ship it.
+
+**Status**: Ready.
+**Waiting on**: You.
+
+---
+
+*Built by Jerome Davis. Designed for the Linchpins.*

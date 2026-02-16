@@ -2,7 +2,7 @@
 """
 Factory Runner — The Autonomous Agent Loop.
 
-Parses .agent/tasks.md (table format) to find the next open task,
+Parses orchestration/tasks.md (rich format) to find the next open task,
 determines the correct agent role, and generates a ready-to-use prompt.
 
 Usage:
@@ -14,8 +14,8 @@ import re
 import sys
 
 # Configuration
-TASKS_FILE = ".agent/tasks.md"
-MEMORY_DIR = ".agent/memory"
+TASKS_FILE = "orchestration/tasks.md"
+MEMORY_DIR = "memory"
 SOULS_DIR = ".agent/souls"
 
 # Role keyword mappings
@@ -72,85 +72,95 @@ def find_tasks_file():
     return None
 
 
-def get_next_task_from_table(tasks_path):
+def get_next_task_from_rich_format(tasks_path):
     """
-    Parses the scaffold's table-format tasks.md.
-    Looks for rows in the 'Backlog' or 'In Progress' sections and returns
-    the first task that has a 'Backlog' or 'To Do' status.
+    Parses the rich-format orchestration/tasks.md or similiar.
+    Looks for tasks under '## Backlog' or '## In Progress'.
+    Matches format: '### TASK-XXX: Task Title'
+    Extracts 'Assigned To' and description.
     """
     with open(tasks_path, "r") as f:
         lines = f.readlines()
 
-    in_backlog = False
-    in_progress = False
-
+    task_id = None
+    title = None
+    assigned_to = None
+    
+    # Simple state machine
+    current_section = None # 'Backlog' | 'In Progress' | 'Done' | 'Blocked'
+    
     for line in lines:
         stripped = line.strip()
-
-        # Track which section we're in
+        
+        # Section detection
         if stripped.startswith("## Backlog"):
-            in_backlog = True
-            in_progress = False
+            current_section = "Backlog"
             continue
         elif stripped.startswith("## In Progress"):
-            in_backlog = False
-            in_progress = True
+            current_section = "In Progress"
             continue
-        elif stripped.startswith("## Done"):
-            in_backlog = False
-            in_progress = False
+        elif stripped.startswith("## Done") or stripped.startswith("## Blocked"):
+            current_section = "Done" # Or blocked, basically stop looking effectively for new work here if we prioritize Backlog/InProgress
             continue
 
-        # Parse table rows (skip headers and separators)
-        if (in_backlog or in_progress) and stripped.startswith("|") and not stripped.startswith("|---") and "Task ID" not in stripped:
-            cells = [c.strip() for c in stripped.split("|")[1:-1]]
-            if len(cells) >= 5:
-                task_id = cells[0]
-                title = cells[1]
-                assigned_to = cells[2]
-                status = cells[4] if len(cells) > 4 else "Backlog"
-
-                # Skip placeholder rows
-                if "[Title]" in title or not title:
-                    continue
-
-                # Return first actionable task
-                if status.lower() in ("backlog", "to do", "todo", "open", "ready"):
-                    return task_id, title, assigned_to
-
-    return None, None, None
-
-
-def get_next_task_from_checkboxes(tasks_path):
-    """
-    Fallback parser for checkbox-format tasks.md (- [ ] style).
-    """
-    with open(tasks_path, "r") as f:
-        lines = f.readlines()
-
-    current_parent = "General Task"
-
-    for line in lines:
-        if line.strip().startswith("- [ ]") and not line.startswith("  "):
-            current_parent = line.strip()[5:].strip()
-            current_parent = re.sub(r"<!--.*?-->", "", current_parent).strip()
-
-        if "- [ ]" in line:
-            task_text = line.split("- [ ]")[1].strip()
-            task_text = re.sub(r"<!--.*?-->", "", task_text).strip()
-            return None, task_text, current_parent
+        # We only care about Backlog or In Progress for fetching the NEXT task
+        if current_section in ["Backlog", "In Progress"]:
+            # Task Header: ### TASK-001: Define Project Requirements
+            if stripped.startswith("### TASK-"):
+                parts = stripped.replace("###", "").strip().split(":", 1)
+                if len(parts) == 2:
+                    t_id = parts[0].strip()
+                    t_title = parts[1].strip()
+                    
+                    # We found a task. Is it assigned or actionable? 
+                    # For this simple runner, we pick the FIRST one we see.
+                    # Ideally we might look for 'Unassigned' or specific agent, but let's grab it.
+                    task_id = t_id
+                    title = t_title
+                    assigned_to = "scrum-master" # Default until we find the line
+                    
+                    # Look ahead for "Assigned To"
+                    # We can return immediately once we find the ID/Title, or scan a few lines for assignment.
+                    # But the function needs to return ONE task.
+                    # Let's scan forward in list to find details for THIS task.
+                    # A better way is to iterate line by line and capture state.
+                    pass 
+                
+            if task_id and stripped.lower().startswith("**assigned to**:"):
+                # **Assigned To**: Unassigned (recommend Requirements BA)
+                val = stripped.split(":", 1)[1].strip()
+                # Clean up "Unassigned (recommend X)" -> "X"
+                if "recommend" in val:
+                     # Extract what's inside parenthesis or after 'recommend'
+                     # heuristic: 'Unassigned (recommend User Story BA)' -> 'User Story BA'
+                     match = re.search(r"recommend\s+([A-Za-z\s]+)\)", val)
+                     if match:
+                         val = match.group(1)
+                
+                assigned_to = val
+                
+                # We have ID, Title, Assignment. We are good to go.
+                return task_id, title, assigned_to
 
     return None, None, None
 
 
 def resolve_role(assigned_to, title=""):
     """Resolves the agent role from the assigned-to field or title keywords."""
-    # Direct match first
-    if assigned_to and assigned_to in ROLE_MAP:
-        return ROLE_MAP[assigned_to]
+    
+    clean_assigned = assigned_to.strip()
+    
+    # Direct match first (exact)
+    if clean_assigned in ROLE_MAP:
+        return ROLE_MAP[clean_assigned]
+        
+    # Partial match in ROLE_MAP keys
+    for key in ROLE_MAP:
+        if key in clean_assigned:
+            return ROLE_MAP[key]
 
     # Keyword fallback from title
-    search_text = f"{assigned_to} {title}".lower()
+    search_text = f"{clean_assigned} {title}".lower()
     for keyword, role in KEYWORD_FALLBACK.items():
         if keyword in search_text:
             return role
@@ -182,9 +192,13 @@ Execute this task following the Self-Annealing Protocol:
 4. **Correct** — Fix any issues found.
 
 When finished:
-1. Update the task status to "Done" in `{TASKS_FILE}`.
-2. Write a handoff entry in `.agent/memory/` with your completion summary.
-3. Log your execution time as `Agent Actual: [X] minutes`.
+1. Deposit all relevant knowledge (diagrams, specs, interview notes) into the appropriate sub-folder in `/docs/`.
+2. Create a `verify.md` artifact in `/docs/verification/` following the template in `directives/templates/verify.md`.
+3. Update the task status to "Done" in `{TASKS_FILE}`.
+   - Move the task from its current section to `## Done`.
+   - Update `**Completed**:` field with today's date.
+4. Write a handoff entry in `{MEMORY_DIR}/` with your completion summary.
+5. Log your execution time as `Agent Actual: [X] minutes`.
 """
     return prompt
 
@@ -195,14 +209,11 @@ def main():
         print(f"Error: Could not find {TASKS_FILE}")
         sys.exit(1)
 
-    # Try table format first, then checkbox fallback
-    task_id, title, assigned_to = get_next_task_from_table(tasks_path)
+    # Use the rich format parser
+    task_id, title, assigned_to = get_next_task_from_rich_format(tasks_path)
 
     if not title:
-        task_id, title, assigned_to = get_next_task_from_checkboxes(tasks_path)
-
-    if not title:
-        print("✅ No pending tasks found in tasks.md!")
+        print("✅ No pending tasks found in orchestrated tasks.md!")
         sys.exit(0)
 
     role = resolve_role(assigned_to or "", title or "")

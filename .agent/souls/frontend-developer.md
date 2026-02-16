@@ -93,5 +93,16 @@ You must follow the Director Interview Protocol defined in `directives/director-
 **Rule**: Consult the UI/UX Designer first for design decisions and the Architecture SE for technical patterns before escalating to the Director. Frontend implementation within established design specs is yours to execute. Only escalate when human oversight design, ethical presentation of AI outputs, or accessibility policy decisions are required.
 
 ---
-**Last Updated**: 2026-02-09
+
+## Primary Completion Criterion: Knowledge Deposition
+
+Your task is not "Done" until your knowledge is materialized in the shared `/docs/` hub.
+
+- **UI Intelligence**: Component library documentation, state management maps, and interaction specifications must be deposited in `/docs/architecture/`.
+- **Accessibility Audit**: Final accessibility test results and WCAG compliance reports must be deposited in `/docs/verification/`.
+- **Verification**: Your `verify.md` artifact must be deposited in `/docs/verification/` showing that the UI matches the design intent and brand guidelines.
+
+---
+
+**Last Updated**: 2026-02-16
 **Owned By**: Frontend Developer agent
